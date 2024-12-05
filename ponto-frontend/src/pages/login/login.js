@@ -6,9 +6,9 @@ import { Form } from 'react-bootstrap';
 
 import ponto from '../../services/conexaoPontoApi';
 import { login } from '../../services/autenticacao';
-import { BotaoEstilizado } from '../../components/botoes.js';
+import { BotaoEstilizadoAzul } from '../../components/botoes.js';
 import { EntradaComIcone, EntradaPequena } from '../../components/entradas.js';
-import { ContainerLogin, Header, FormContainer, FormTitle, FormDescription, InputGroup, ButtonContainer, LinkTexto } from './stylesLogin.js';
+import { ContainerLogin, Header, FormContainer, FormTitle, FormDescription, InputGroup, ButtonContainer, LinkTexto, Label } from './stylesLogin.js';
 
 
 const Login = () => {
@@ -31,7 +31,7 @@ const Login = () => {
       if (papel === "comun") {
         navigate('/ponto');
       } else if (papel === "adm"){
-        navigate('/cadastrousuario');
+        navigate('/cadastrarusuariocomun');
       }else{
         toast.error("Login incorreto!");
       }
@@ -47,13 +47,13 @@ const Login = () => {
 
   return (
     <ContainerLogin>
-      <Header>Gestão de Ponto de Jornada de Trabalho</Header>
+      <Header>Gestão de Ponto</Header>
       <FormContainer>
         <FormTitle>Login</FormTitle>
         <FormDescription>Preencha os campos abaixo com o seu login e a senha.</FormDescription>
         <Form className="d-flex flex-column justify-content-center align-items-center" onSubmit={handleSubmitForm}>
           <InputGroup>
-            <label>Login*</label>
+            <Label>Login*</Label>
             <Form.Group className="mb-3">
               <EntradaComIcone 
                 input={
@@ -69,7 +69,7 @@ const Login = () => {
             </Form.Group>
           </InputGroup>
           <InputGroup>
-            <label>Senha*</label>
+            <Label>Senha*</Label>
             <Form.Group>
               <EntradaComIcone 
                 input={
@@ -85,7 +85,7 @@ const Login = () => {
             </Form.Group>
           </InputGroup>
           <ButtonContainer>
-            <BotaoEstilizado type="submit">Entrar</BotaoEstilizado>
+            <BotaoEstilizadoAzul type="submit">Entrar</BotaoEstilizadoAzul>
           </ButtonContainer>
         </Form>
         <LinkTexto href="/">

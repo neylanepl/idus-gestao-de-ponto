@@ -6,12 +6,11 @@ export const Container = styled.div`
   justify-content: space-between;
   width: 100%;
   align-items: stretch;
-  height: 100vh;
   gap: 16px;
   background-color: #eaece2;
   padding: 50px 80px;
 
-  media (max-width: 853px) {
+  @media (max-width: 853px) {
     flex-direction: column;
     height: auto;
     padding: 20px;
@@ -31,9 +30,9 @@ export const Col8 = styled.div`
   padding: 60px 20px;
 
   @media (max-width: 853px) {
-  flex: none;
-  width: 100%;
-  margin-bottom: 16px;
+    flex: none;
+    width: 100%;
+    margin-bottom: 16px;
   }
 `;
 
@@ -50,8 +49,8 @@ export const Col4 = styled.div`
   padding: 60px 20px; 
 
   @media (max-width: 853px) {
-  flex: none;
-  width: 100%;
+    flex: none;
+    width: 100%;
   }
 `;
 
@@ -91,28 +90,12 @@ export const InfoRetangulo = styled.div`
   flex-direction: column; 
   align-items: center;    
   justify-content: space-between;
+  padding: 14px 0px;
 `;
 
 export const InfoItem = styled.div`
   font-size: 16px;
   margin-bottom: 8px;
-`;
-
-export const Button = styled.button`
-  width: 80%;
-  padding: 10px;
-  background-color: white;
-  color: #2793ee;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.2s ease-in-out;
-
-  &:hover {
-    background-color: #eaece2;
-  }
 `;
 
 export const FotoPerfil = styled(PersonCircle)`

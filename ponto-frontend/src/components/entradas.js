@@ -19,9 +19,17 @@ export const Entrada = styled.input`
 
 export const EntradaMedia = styled(Entrada)`
   width: 100%;
-  min-width: 210px;
+  min-width: 384px;
   height: 44px;
 `;
+
+export const SelectMedio = styled(Form.Select)`
+  border: 1px solid #000000;
+  width: 100%;
+  min-width: 384px;
+  height: 44px;
+`;
+
 
 export const EntradaPequena = styled(Entrada)`
   width: 100%;
@@ -31,7 +39,7 @@ export const EntradaPequena = styled(Entrada)`
 
 export const EntradaGrande = styled(Entrada)`
     width: 100%;
-    min-width: 210px;
+    min-width: 484px;
     height: 44px;
 `;
 
