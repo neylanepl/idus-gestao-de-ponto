@@ -5,6 +5,7 @@ import ponto, { carregarDados } from '../../services/conexaoPontoApi';
 import { obterIdUsuarioAtual } from '../../services/autenticacao';
 import Base from '../../components/base/baseConteudo.js'
 import TabelaPontos from '../../components/tabela/tabela.js'
+import { BotaoEstilizadoBranco } from '../../components/botoes.js';
 import { Container, Col8, Col4, ContainerRetangulos, InfoRetangulo, SecaoCabecalho, SecaoCartao, InfoContainer, InfoItem, Button, FotoPerfil } from './stylesPonto.js';
 
 
@@ -70,9 +71,9 @@ const Ponto = () => {
                   <InfoItem><strong>Empresa:</strong> TechCorp</InfoItem>
                 </InfoContainer>
               </SecaoCartao>
-              <Button type="submit" onClick={(handleSubmitForm)}>
+              <BotaoEstilizadoBranco type="submit" onClick={(handleSubmitForm)}>
                 Registrar Ponto
-              </Button>
+              </BotaoEstilizadoBranco>
             </Col4>
           </Container>
     </Base>

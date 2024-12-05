@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Button } from 'react-bootstrap';
 
-export const BotaoEstilizado = styled(Button)`
+export const BotaoEstilizadoAzul = styled(Button)`
     margin: ${props => props.margem ? "auto" : "40px"};
     font-weight: bold;
     outline: none;
@@ -16,6 +16,23 @@ export const BotaoEstilizado = styled(Button)`
       background: #6A6A6A;
       color: #E5DBDB;
     }
+`;
+
+export const BotaoEstilizadoBranco = styled.button`
+  width: 80%;
+  padding: 10px;
+  background-color: white;
+  color: #2793ee;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #eaece2;
+  }
 `;
 
 const BotaoComBorda = styled(Button)`

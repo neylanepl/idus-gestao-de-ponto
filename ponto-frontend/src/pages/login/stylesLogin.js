@@ -12,7 +12,7 @@ export const ContainerLogin = styled.div`
 
 export const Header = styled.h1`
   color: white;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 `;
 
 export const FormContainer = styled.div`
@@ -37,7 +37,7 @@ export const FormDescription = styled.h6`
   margin-bottom: 30px;
 `;
 
-export const InputGroup = styled.div`
+export const InputGroup = styled(Form.Group)`
   max-width: 284px;
   display: flex;
   flex-direction: column;
@@ -48,6 +48,10 @@ export const InputGroup = styled.div`
 
 export const ButtonContainer = styled(Form.Group)`
   margin-bottom: 8px;
+`;
+
+export const Label = styled(Form.Label)`
+  font-weight: bold;
 `;
 
 export const LinkTexto = styled(Nav.Link)`
