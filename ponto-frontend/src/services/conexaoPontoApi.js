@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { obterToken } from './autenticacao';
 
-const baseURL = 'http://localhost:3001/api';
+const baseURL = 'http://localhost:8080';
 
 const ponto = axios.create({
     baseURL 

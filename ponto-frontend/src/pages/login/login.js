@@ -23,7 +23,7 @@ const Login = () => {
     try {
       const { data } = await ponto.post('/login', payload);
       login(data.token, data.role, data.id);
-      navigate('/start');
+      navigate('/ponto');
     } catch (error) {
       let messageError = "Não foi possível realizar o login!";
       if (error.response?.data?.err) {
@@ -73,7 +73,7 @@ const Login = () => {
             </Form.Group>
           </InputGroup>
           <ButtonContainer>
-            <BotaoEstilizado type="submit">Entrar</BotaoEstilizado>
+            <BotaoEstilizado type="submit" onClick={e => (navigate('/ponto'))}>Entrar</BotaoEstilizado>
           </ButtonContainer>
         </Form>
         <ToastContainer />
