@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form } from 'react-bootstrap';
+import { Form, Nav } from 'react-bootstrap';
 
 export const ContainerLogin = styled.div`
   background: #2793ee;
@@ -47,5 +47,13 @@ export const InputGroup = styled.div`
 `;
 
 export const ButtonContainer = styled(Form.Group)`
-  margin-bottom: 30px;
+  margin-bottom: 8px;
+`;
+
+export const LinkTexto = styled(Nav.Link)`
+  color: #2793ee;
+  font-size: 12px;
+  font-weight: bold;
+  padding-rigth: 0px;
+  margin-bottom: 38px;
 `;

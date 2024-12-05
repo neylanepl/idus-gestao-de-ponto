@@ -7,7 +7,7 @@ export const estaAutenticado = () => localStorage.getItem(CHAVE_TOKEN) !== null;
 export const obterToken = () => localStorage.getItem(CHAVE_TOKEN);
 
 export const obterPapelAtualUsuario = () => {
-    return JSON.parse(localStorage.getItem(PAPEL_USUARIO));
+    return localStorage.getItem(PAPEL_USUARIO);
 };
 
 export const obterIdUsuarioAtual = () => localStorage.getItem(ID_USUARIO);

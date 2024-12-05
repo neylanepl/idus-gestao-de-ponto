@@ -8,28 +8,40 @@ import ponto from '../../services/conexaoPontoApi';
 import { login } from '../../services/autenticacao';
 import { BotaoEstilizado } from '../../components/botoes.js';
 import { EntradaComIcone, EntradaPequena } from '../../components/entradas.js';
-import { ContainerLogin, Header, FormContainer, FormTitle, FormDescription, InputGroup, ButtonContainer } from './stylesLogin.js';
+import { ContainerLogin, Header, FormContainer, FormTitle, FormDescription, InputGroup, ButtonContainer, LinkTexto } from './stylesLogin.js';
 
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const [loginForm, setLogin] = useState('');
+  const [senhaForm, setSenha] = useState('');
+
   const navigate = useNavigate();
 
   const handleSubmitForm = async e => {
     e.preventDefault();
-    const payload = { cpf: email, password: senha };
+    const payload = { login: loginForm, password: senhaForm };
 
     try {
-      const { data } = await ponto.post('/login', payload);
-      login(data.token, data.role, data.id);
-      navigate('/ponto');
+      //const { data } = await ponto.post('/login', payload);
+      // Implementação fictícia do login, pois não foi implementado o backend.
+      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.fakeTokenData.fakeSignature";
+      const papel = loginForm; // Pode ser "adm" ou "comun"
+      const id = 1;
+      login(token, papel, id);
+      if (papel === "comun") {
+        navigate('/ponto');
+      } else if (papel === "adm"){
+        navigate('/cadastrousuario');
+      }else{
+        toast.error("Login incorreto!");
+      }
+      
     } catch (error) {
       let messageError = "Não foi possível realizar o login!";
       if (error.response?.data?.err) {
         messageError = error.response.data.err;
       }
-      toast.error(messageError);
+      // toast.error(messageError);
     }
   };
 
@@ -38,19 +50,19 @@ const Login = () => {
       <Header>Gestão de Ponto de Jornada de Trabalho</Header>
       <FormContainer>
         <FormTitle>Login</FormTitle>
-        <FormDescription>Preencha os campos abaixo com o seu e-mail e a senha.</FormDescription>
+        <FormDescription>Preencha os campos abaixo com o seu login e a senha.</FormDescription>
         <Form className="d-flex flex-column justify-content-center align-items-center" onSubmit={handleSubmitForm}>
           <InputGroup>
-            <label>E-mail*</label>
+            <label>Login*</label>
             <Form.Group className="mb-3">
               <EntradaComIcone 
                 input={
                   <EntradaPequena 
-                    placeholder="Digite o seu e-mail" 
-                    type="email" 
+                    placeholder="Digite o seu login" 
+                    type="text" 
                     required
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    value={loginForm}
+                    onChange={e => setLogin(e.target.value)}
                   />
                 } 
               />
@@ -65,7 +77,7 @@ const Login = () => {
                     placeholder="Digite sua senha" 
                     type="password"
                     required 
-                    value={senha} 
+                    value={senhaForm} 
                     onChange={e => setSenha(e.target.value)}
                   />
                 } 
@@ -73,9 +85,12 @@ const Login = () => {
             </Form.Group>
           </InputGroup>
           <ButtonContainer>
-            <BotaoEstilizado type="submit" onClick={e => (navigate('/ponto'))}>Entrar</BotaoEstilizado>
+            <BotaoEstilizado type="submit">Entrar</BotaoEstilizado>
           </ButtonContainer>
         </Form>
+        <LinkTexto href="/">
+          Esqueci minha senha
+        </LinkTexto>
         <ToastContainer />
       </FormContainer>
     </ContainerLogin>
