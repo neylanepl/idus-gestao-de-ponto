@@ -1,7 +1,7 @@
 export const tema = {
     colors: {
       primaryColor: '#2793ee',
-      secondaryColor: '#F2F2F2',
+      secondaryColor: '#eaece2',
       tertiaryColor: '#0D0D0D',
       quaternaryColor: '#F7F7F7',
       detailsColor: '#04345c',

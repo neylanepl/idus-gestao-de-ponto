@@ -12,17 +12,17 @@ import { ContainerLogin, Header, FormContainer, FormTitle, FormDescription, Inpu
 
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
   const navigate = useNavigate();
 
   const handleSubmitForm = async e => {
     e.preventDefault();
-    const payload = { cpf: email, password: senha };
+    const payload = { login: login, password: senha };
 
     try {
-      const { data } = await ponto.post('/login', payload);
-      login(data.token, data.role, data.id);
+      //const { data } = await ponto.post('/login', payload);
+      //login(data.token, data.role, data.id);
       navigate('/ponto');
     } catch (error) {
       let messageError = "Não foi possível realizar o login!";
@@ -38,19 +38,19 @@ const Login = () => {
       <Header>Gestão de Ponto de Jornada de Trabalho</Header>
       <FormContainer>
         <FormTitle>Login</FormTitle>
-        <FormDescription>Preencha os campos abaixo com o seu e-mail e a senha.</FormDescription>
+        <FormDescription>Preencha os campos abaixo com o seu login e a senha.</FormDescription>
         <Form className="d-flex flex-column justify-content-center align-items-center" onSubmit={handleSubmitForm}>
           <InputGroup>
-            <label>E-mail*</label>
+            <label>Login*</label>
             <Form.Group className="mb-3">
               <EntradaComIcone 
                 input={
                   <EntradaPequena 
-                    placeholder="Digite o seu e-mail" 
-                    type="email" 
+                    placeholder="Digite o seu login" 
+                    type="text" 
                     required
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    value={login}
+                    onChange={e => setLogin(e.target.value)}
                   />
                 } 
               />
