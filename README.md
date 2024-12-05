@@ -80,7 +80,7 @@ O servidor estará disponível em [http://localhost:8080](http://localhost:8080)
     yarn start
     ```
 
-A aplicação estará disponível em [http://localhost:3000](http://localhost:3000).
+A aplicação estará disponível em [http://localhost:3001](http://localhost:3001).
 
 ### Executando Backend e Frontend Simultaneamente
 Certifique-se de iniciar o backend primeiro para que o frontend possa se conectar corretamente à API.

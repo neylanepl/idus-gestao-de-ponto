@@ -25,13 +25,13 @@ const Login = () => {
       //const { data } = await ponto.post('/login', payload);
       // Implementação fictícia do login, pois não foi implementado o backend.
       const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.fakeTokenData.fakeSignature";
-      const papel = loginForm; // Pode ser "adm" ou "comun"
+      const papel = loginForm; // Pode ser "adm" ou "comum"
       const id = 1;
       login(token, papel, id);
-      if (papel === "comun") {
+      if (papel === "comum") {
         navigate('/ponto');
       } else if (papel === "adm"){
-        navigate('/cadastrarusuariocomun');
+        navigate('/cadastrarusuariocomum');
       }else{
         toast.error("Login incorreto!");
       }

@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import Login from './pages/login/login';
 import Ponto from './pages/ponto/ponto';
-import CadastrarUsuarioComun from './pages/cadastrarUsuarioComun/cadastrarUsuarioComun';
+import CadastrarUsuarioComum from './pages/cadastrarUsuarioComum/cadastrarUsuarioComum';
 import PrivarRota from './components/privarRota/privarRota';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <Routes>
           <Route path='/' element={<Login/>} />
           <Route path='/ponto' element={<PrivarRota><Ponto/></PrivarRota>} />
-          <Route path='/cadastrarusuariocomun' element={<PrivarRota><CadastrarUsuarioComun/></PrivarRota>} />
+          <Route path='/cadastrarusuariocomum' element={<PrivarRota><CadastrarUsuarioComum/></PrivarRota>} />
       </Routes>
       <ToastContainer />
     </BrowserRouter>

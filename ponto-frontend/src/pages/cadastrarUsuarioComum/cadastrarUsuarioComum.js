@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { Form } from 'react-bootstrap';
 
-import ponto from '../../services/conexaoPontoApi';
-import Base from '../../components/base/baseConteudo';
+import ponto from '../../services/conexaoPontoApi.js';
+import Base from '../../components/base/baseConteudo.js';
 import { BotaoEstilizadoBranco } from '../../components/botoes.js';
 import { EntradaComIcone, EntradaMedia, SelectMedio } from '../../components/entradas.js';
-import {ContainerCadastro, FormContainer, FormTitle, Label, InputGroup} from './stylesCadastro'
+import {ContainerCadastro, FormContainer, FormTitle, Label, InputGroup} from './stylesCadastro.js'
 
 
-const CadastrarUsuarioComun = () => {
+const CadastrarUsuarioComum = () => {
 
     const [nomeForm, setNome] = useState('');
     const [loginForm, setLogin] = useState('');
@@ -36,7 +36,7 @@ const CadastrarUsuarioComun = () => {
         try {
             const { data } = await ponto.post('/usuario/comum', payload);
             toast.success("Cadastro realizado com sucesso!")
-            navigate('/cadastrarusuariocomun');
+            navigate('/cadastrarusuariocomum');
         } catch (error) {
             toast.error("Cadastro falhou!");
         }
@@ -46,7 +46,7 @@ const CadastrarUsuarioComun = () => {
         <Base>
             <ContainerCadastro>
                 <FormContainer>
-                    <FormTitle>Cadastro de Usuário Comun</FormTitle>
+                    <FormTitle>Cadastro de Usuário Comum</FormTitle>
                     <Form className="d-flex flex-column justify-content-center" onSubmit={e => { handleSubmitForm(e) }}>
                         <InputGroup>
                             <Label>Nome*</Label>
@@ -149,4 +149,4 @@ const CadastrarUsuarioComun = () => {
     );
 };
 
-export default CadastrarUsuarioComun;
+export default CadastrarUsuarioComum;

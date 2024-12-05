@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Form, Nav } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 export const ContainerCadastro = styled.div`
   background: #eaece2;
