@@ -20,7 +20,6 @@ export const carregarDados = async (caminho, atualizarDados) => {
   atualizarDados(resultado.data);
 }
 
-
 export const atualizarDados = async (caminho, payload) => {
   if(payload)
     return await ponto.put(caminho, payload);

@@ -5,7 +5,7 @@ import { Navbar } from 'react-bootstrap';
 
 export const Avatar = styled.div`
   ${({ theme }) => css`
-    background: ${ theme.colors.secondaryColor };
+    background: ${ theme.colors.white };
     border-radius: 75px;
     width: 28px;
     height: 28px;

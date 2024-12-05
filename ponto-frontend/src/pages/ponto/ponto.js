@@ -1,17 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-import ponto from '../../services/conexaoPontoApi';
+import ponto, { carregarDados } from '../../services/conexaoPontoApi';
+import { obterIdUsuarioAtual } from '../../services/autenticacao';
 import Base from '../../components/base/baseConteudo.js'
 import TabelaPontos from '../../components/tabela/tabela.js'
 import { Container, Col8, Col4, ContainerRetangulos, InfoRetangulo, SecaoCabecalho, SecaoCartao, InfoContainer, InfoItem, Button, FotoPerfil } from './stylesPonto.js';
 
 
 const Ponto = () => {
-
+  const idUsuario = obterIdUsuarioAtual();
   const [dadosPontos, setDadosPontos] = useState([]);
   const [horasExcedidas, setHorasExcedidas] = useState("");
   const [horasPententes, setHorasPententes] = useState("");
+
+  useEffect(() => {
+      carregarDados(`/diaDeTrabalho/resumo/por-usuarioId/${idUsuario}`, setDadosPontos);
+      carregarDados(`/diaDeTrabalho/horasExcedidas/por-usuarioId/${idUsuario}`, setHorasExcedidas);
+      carregarDados(`/diaDeTrabalho/previsaoCompletarJornada/por-usuarioId/${idUsuario}`, setHorasPententes);
+  }, []);
 
   const handleSubmitForm = async e => {
     e.preventDefault();
@@ -19,12 +26,10 @@ const Ponto = () => {
     try {
       await ponto.post('/ponto/1');
       toast.success("Ponto registrado!");
-      const {data: dadosResumo} = await ponto.get('/diaDeTrabalho/resumo/por-usuarioId/1');
-      setDadosPontos(dadosResumo.pontosDoDia);
-      const {data: dadoHorasExcedidas} = await ponto.get('/diaDeTrabalho/horasExcedidas/por-usuarioId/1');
-      setHorasExcedidas(dadoHorasExcedidas.horasExcedidas);
-      const {data: dadosPrevisaoCompletarJornada} = await ponto.get('/diaDeTrabalho/previsaoCompletarJornada/por-usuarioId/1');
-      setHorasPententes(dadosPrevisaoCompletarJornada.previsaoCompletarJornada);
+
+      carregarDados('/diaDeTrabalho/resumo/por-usuarioId/1', setDadosPontos);
+      carregarDados('/diaDeTrabalho/horasExcedidas/por-usuarioId/1', setHorasExcedidas);
+      carregarDados('/diaDeTrabalho/previsaoCompletarJornada/por-usuarioId/1', setHorasPententes);
     } catch (error) {
       let messageError = "Não foi possível registrar o ponto!";
       if (error.response?.data?.err) {
@@ -39,18 +44,18 @@ const Ponto = () => {
           <Container>
             <Col8>
               <SecaoCabecalho>Resumo de Jornada do Dia</SecaoCabecalho>
-              <TabelaPontos pontosDoDia={dadosPontos}/>
+              <TabelaPontos pontosDoDia={dadosPontos.pontosDoDia}/>
               <ContainerRetangulos>
                 <SecaoCartao>
                   <InfoRetangulo>
                     <InfoItem><strong>Horas Excedidas</strong> </InfoItem>
-                    <InfoItem>{horasExcedidas}</InfoItem>
+                    <InfoItem>{horasExcedidas.horasExcedidas}</InfoItem>
                   </InfoRetangulo>
                 </SecaoCartao>
                 <SecaoCartao>
                   <InfoRetangulo>
                     <InfoItem><strong>Horas Pendentes</strong> </InfoItem>
-                    <InfoItem>{horasPententes}</InfoItem>
+                    <InfoItem>{horasPententes.previsaoCompletarJornada}</InfoItem>
                   </InfoRetangulo>
                 </SecaoCartao>
               </ContainerRetangulos>
